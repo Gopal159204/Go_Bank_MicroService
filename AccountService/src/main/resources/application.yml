@@ -1,0 +1,69 @@
+server:
+  port: 8765
+
+spring:
+  application:
+    name: "account"
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    name: customer
+    password: Root@1234
+    url: jdbc:mysql://localhost:3306/customer
+    username: root
+  profiles:
+    active: "prod"
+  jpa:
+    properties:
+      hibernate:
+      dialect: org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+  config:
+    import: "optional:configserver:http://localhost:8071/"
+
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  health:
+    readiness-state:
+      enabled: true
+    liveness-state:
+      enabled: true
+  endpoint:
+    shutdown:
+      enabled: true
+    health:
+      probes:
+        enabled: true
+  info:
+    env:
+      enabled: true
+endpoints:
+  shutdown:
+    enabled: true
+
+
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    fetchRegistry: true
+    registerWithEureka: true
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+info:
+  app:
+    name: "account"
+    description: "gobank accunt details"
+    version: "1.0.0"
+logging:
+  level:
+    com:
+      gobank:
+        accountservice: DEBUG

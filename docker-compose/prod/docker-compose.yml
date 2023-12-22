@@ -1,0 +1,125 @@
+networks:
+  gobank:
+    driver: "bridge"
+services:
+  accountsdb:
+    container_name: account-ms
+    ports:
+      - 3305:3306
+    environment:
+      MYSQL_DATABASE: customer
+    extends:
+      file: common-config.yml
+      service: microservice-db-config
+
+  loandb:
+    container_name: loan-ms
+    ports:
+      - 3307:3306
+    environment:
+      MYSQL_DATABASE: customer
+    extends:
+      file: common-config.yml
+      service: microservice-db-config
+
+  carddb:
+    container_name: card-ms
+    ports:
+      - 3308:3306
+    environment:
+      MYSQL_DATABASE: customer
+    extends:
+      file: common-config.yml
+      service: microservice-db-config
+
+  configserver:
+    image: "gopal159204/configserver:s3"
+    container_name: configserver-ms
+    ports:
+      - "8071:8071"
+    healthcheck:
+      test: "curl --fail --silent localhost:8071/actuator/health/readiness | grep UP || exit 1"
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    extends:
+      file: common-config.yml
+      service: microservice-base-config
+
+
+
+  eurekaserver:
+    image: "gopal159204/eurekaserver:s3"
+    container_name: eurekaserver-ms
+    ports:
+      - "8761:8761"
+    healthcheck:
+      test: "curl --fail --silent localhost:8761/actuator/health/readiness | grep UP || exit 1"
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    extends:
+      file: common-config.yml
+      service: microservice-configserver-config
+    environment:
+      SPRING_APPLICATION_NAME: "eureka"
+
+
+
+
+  accounts:
+    image: "gopal159204/accountservice:s3"
+    container_name: accounts-ms
+    ports:
+      - "8765:8765"
+    environment:
+      SPRING_APPLICATION_NAME: "account"
+      SPRING_DATASOURCE_URL: "jdbc:mysql://accountsdb:3306/customer"
+      EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE: http://eurekaserver:8761/eureka/
+
+    extends:
+      file: common-config.yml
+      service: microservice-eureka-config
+
+
+
+  loans:
+    image: "gopal159204/service:s3"
+    container_name: loans-ms
+    ports:
+      - "8764:8764"
+    environment:
+      SPRING_APPLICATION_NAME: "loan"
+      SPRING_DATASOURCE_URL: "jdbc:mysql://loandb:3306/customer"
+      EUREKA_CLIENT_SERVICE-URL_DEFAULTZONE: http://eurekaserver:8761/eureka/
+
+    extends:
+      file: common-config.yml
+      service: microservice-eureka-config
+
+
+
+  card:
+    image: "gopal159204/card:s3"
+    container_name: cards-ms
+    ports:
+      - "8763:8763"
+    environment:
+      SPRING_APPLICATION_NAME: "card"
+      SPRING_DATASOURCE_URL: "jdbc:mysql://carddb:3306/customer"
+      EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE: http://eurekaserver:8761/eureka/
+
+    extends:
+      file: common-config.yml
+      service: microservice-eureka-config
+
+
+
+
+
+
+
+
+
+
+

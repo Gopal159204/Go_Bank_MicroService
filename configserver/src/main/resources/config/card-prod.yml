@@ -1,0 +1,13 @@
+
+build:
+  version: "1.0"
+
+
+card:
+  message: "Welcome to GoBank card related Prod APIS "
+  contactDetails:
+    name: "ram singh  - Product Owner"
+    email: "ram@gobank.com"
+  onCallSupport:
+    - (421) 755-5542
+    - (344) 454-1535

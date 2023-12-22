@@ -1,0 +1,14 @@
+
+
+build:
+  version: "2.0"
+
+
+card:
+  message: "Welcome to GoBank card related qa APIS "
+  contactDetails:
+    name: "Kirti Patil  - qa lead"
+    email: "kir@gobank.com"
+  onCallSupport:
+    - (421) 755-5542
+    - (344) 454-1535

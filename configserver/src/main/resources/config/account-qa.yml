@@ -1,0 +1,14 @@
+
+
+build:
+  version: "2.0"
+
+
+account:
+  message: "Welcome to GoBank accounts related QA APIS "
+  contactDetails:
+    name: "Demil Shaha  - QA Lead"
+    email: "ds@gobank.com"
+  onCallSupport:
+    - (666) 343-5542
+    - (666) 243-1345

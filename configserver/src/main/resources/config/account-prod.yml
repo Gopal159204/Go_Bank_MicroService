@@ -1,0 +1,14 @@
+
+
+build:
+  version: "1.0"
+
+
+account:
+  message: "Welcome to GoBank accounts related Prod APIS "
+  contactDetails:
+    name: "Kim Joe  - Product Owner"
+    email: "kim@gobank.com"
+  onCallSupport:
+    - (421) 755-5542
+    - (344) 454-1535

@@ -1,0 +1,14 @@
+
+
+build:
+  version: "2.0"
+
+
+loan:
+  message: "Welcome to GoBank loan related qa APIS "
+  contactDetails:
+    name: "Shani kale  - qa lead"
+    email: "shanik@gobank.com"
+  onCallSupport:
+    - (421) 755-5542
+    - (344) 454-1535

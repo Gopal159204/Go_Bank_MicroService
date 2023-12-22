@@ -1,0 +1,80 @@
+#services:
+#  accountservice:
+#    image: "gopal159204/accountservice:s1"
+#    container_name: account-ms
+#    ports:
+#      - "8765:8765"
+#    deploy:
+#      resources:
+#        limits:
+#          memory: 700m
+#    networks:
+#      -gobank
+#
+#  service:
+#    image: "gopal159204/service:s1"
+#    container_name: loan-ms
+#    ports:
+#      - "8764:8764"
+#    deploy:
+#      resources:
+#        limits:
+#          memory: 700m
+#    networks:
+#      -gobank
+#
+#  card:
+#    image: "gopal159204/card:s1"
+#    container_name: card-ms
+#    ports:
+#      - "8763:8763"
+#    deploy:
+#      resources:
+#        limits:
+#          memory: 700m
+#    networks:
+#      -gobank
+#networks:
+#  gobank:
+#    driver: "bridge"
+
+services:
+  accountservice:
+    image: "gopal159204/accountservice:s1"
+    container_name: account-ms
+    ports:
+      - 8765:8765
+    deploy:
+      resources:
+        limits:
+          memory: 700m
+    networks:
+      - gobank
+
+  service:
+    image: "gopal159204/service:s1"
+    container_name: loan-ms
+    ports:
+      - 8764:8764
+    deploy:
+      resources:
+        limits:
+          memory: 700m
+    networks:
+      - gobank
+
+  card:
+    image: "gopal159204/card:s1"
+    container_name: card-ms
+    ports:
+      - 8763:8763
+    deploy:
+      resources:
+        limits:
+          memory: 700m
+    networks:
+      - gobank
+
+networks:
+  gobank:
+    driver: "bridge"

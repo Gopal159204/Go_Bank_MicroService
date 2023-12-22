@@ -1,0 +1,16 @@
+build:
+  version: "3.0"
+account:
+  message: "Welcome to GoBank accounts related local card APIs "
+  contactDetails:
+    name: "anju ya dav  - Developer"
+    email: "anju@gobank.com"
+  onCallSupport:
+    - (555) 555-1234
+    - (555) 523-1345
+
+
+
+
+
+

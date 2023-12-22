@@ -1,0 +1,12 @@
+
+build:
+  version: "3.0"
+
+loan:
+  message: "Welcome to GoBank loan related local loan APIs "
+  contactDetails:
+    name: "maonj bhire  - Developer"
+    email: "mb@gobank.com"
+  onCallSupport:
+    - (555) 555-1234
+    - (555) 523-1345

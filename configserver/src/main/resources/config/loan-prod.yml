@@ -1,0 +1,14 @@
+
+
+build:
+  version: "1.0"
+
+
+loan:
+  message: "Welcome to GoBank loan related Prod APIS "
+  contactDetails:
+    name: "elvish  - Product Owner"
+    email: "elvi@gobank.com"
+  onCallSupport:
+    - (331) 212-3342
+    - (554) 332-1345
